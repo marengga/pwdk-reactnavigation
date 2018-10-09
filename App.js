@@ -1,32 +1,50 @@
-import React from 'react';
-import { createStackNavigator } from 'react-navigation';
-import Satu from './components/Satu';
-import Dua from './components/Dua';
+import React from "react";
+import { Image } from 'react-native';
+import { createBottomTabNavigator } from "react-navigation";
+import Tiga from "./components/Tiga";
+import Empat from "./components/Empat";
 
-const RootStackNav = createStackNavigator(
+// Ternary Operator
+// [condition] ? [true] : [false]
+
+const RootTabNav = createBottomTabNavigator(
   {
-    HalSatu: {
-      screen: Satu,
+    HalTiga: {
+      screen: Tiga,
       navigationOptions: ({ navigation }) => ({
-        title: 'Halaman Satu'
-      }),
+        title: "Halaman Tiga",
+        tabBarIcon: ({ focused }) => (
+          <Image
+            source={focused
+              ? require("./images/home-active.png")
+              : require("./images/home.png")}
+            style={{ width: 28, height: 28 }}
+          />
+        )
+      })
     },
-    HalDua: {
-      screen: Dua,
+    HalEmpat: {
+      screen: Empat,
       navigationOptions: ({ navigation }) => ({
-        title: 'Halaman Dua',
-      }),
-    },
+        title: "Halaman Empat",
+        tabBarIcon: ({ focused }) => (
+          <Image
+            source={focused
+              ? require("./images/tools-active.png")
+              : require('./images/tools.png')}
+            style={{ width: 28, height: 28 }}
+          />
+        )
+      })
+    }
   },
   {
-    initialRouteName: 'HalSatu'
+    initialRouteName: "HalTiga"
   }
 );
 
 export default class App extends React.Component {
   render() {
-    return (
-      <RootStackNav />
-    );
+    return <RootTabNav />;
   }
 }

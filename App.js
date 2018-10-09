@@ -1,50 +1,31 @@
 import React from "react";
-import { Image } from 'react-native';
-import { createBottomTabNavigator } from "react-navigation";
-import Tiga from "./components/Tiga";
-import Empat from "./components/Empat";
+import { Image } from "react-native";
+import { createDrawerNavigator } from "react-navigation";
+import Lima from "./components/Lima";
+import Enam from "./components/Enam";
 
-// Ternary Operator
-// [condition] ? [true] : [false]
-
-const RootTabNav = createBottomTabNavigator(
+const RootDrawerNav = createDrawerNavigator(
   {
-    HalTiga: {
-      screen: Tiga,
+    HalLima: {
+      screen: Lima,
       navigationOptions: ({ navigation }) => ({
-        title: "Halaman Tiga",
-        tabBarIcon: ({ focused }) => (
-          <Image
-            source={focused
-              ? require("./images/home-active.png")
-              : require("./images/home.png")}
-            style={{ width: 28, height: 28 }}
-          />
-        )
+        title: "Halaman Lima"
       })
     },
-    HalEmpat: {
-      screen: Empat,
+    HalEnam: {
+      screen: Enam,
       navigationOptions: ({ navigation }) => ({
-        title: "Halaman Empat",
-        tabBarIcon: ({ focused }) => (
-          <Image
-            source={focused
-              ? require("./images/tools-active.png")
-              : require('./images/tools.png')}
-            style={{ width: 28, height: 28 }}
-          />
-        )
+        title: "Halaman Enam"
       })
     }
   },
   {
-    initialRouteName: "HalTiga"
+    initialRouteName: "HalLima"
   }
 );
 
 export default class App extends React.Component {
   render() {
-    return <RootTabNav />;
+    return <RootDrawerNav />;
   }
 }
